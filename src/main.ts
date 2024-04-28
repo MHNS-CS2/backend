@@ -7,6 +7,9 @@ import {AuthModule} from './auth/infrastructure/AuthModule';
 import {FileModule} from './file/infrastructure/FileModule';
 import {NotifierModule} from './notifier/infrastructure/NotifierModule';
 import {InitModule} from './init/infrastructure/InitModule';
+import {NewsModule} from './news/infrastructure/NewsModule';
+import {ServeStaticModule} from '@nestjs/serve-static';
+import {join} from 'path';
 
 @Module({
     ...baseConfig,
@@ -34,11 +37,9 @@ import {InitModule} from './init/infrastructure/InitModule';
                     'X-Requested-With',
                     'Content-Disposition',
                     'Content-Range',
-                    'Book-Slug',
                 ],
                 allowDomains: [
-                    '127.0.0.1:9996',
-                    '127.0.0.1:9997',
+                    '127.0.0.1:9991',
                 ],
             },
             auth: {
@@ -68,6 +69,10 @@ import {InitModule} from './init/infrastructure/InitModule';
                 FileModule,
                 NotifierModule,
                 InitModule,
+                NewsModule,
+                ServeStaticModule.forRoot({
+                    rootPath: join(__dirname, '..', '..', 'files', 'uploaded')
+                }),
                 ...module.imports,
             ],
         };
