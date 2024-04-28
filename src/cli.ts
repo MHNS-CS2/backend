@@ -7,6 +7,7 @@ import {FileModule} from './file/infrastructure/FileModule';
 import {UserModule} from './user/infrastructure/UserModule';
 import {NotifierModule} from './notifier/infrastructure/NotifierModule';
 import {InitModule} from './init/infrastructure/InitModule';
+import {NewsModule} from './news/infrastructure/NewsModule';
 
 @Module({
     ...baseConfig,
@@ -21,6 +22,7 @@ import {InitModule} from './init/infrastructure/InitModule';
                 UserModule,
                 NotifierModule,
                 InitModule,
+                NewsModule,
             ],
         };
     },
