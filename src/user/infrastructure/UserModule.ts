@@ -6,9 +6,10 @@ import {AuthModule} from '@steroidsjs/nest-modules/auth/AuthModule';
 import {forwardRef} from '@nestjs/common';
 import {IUserService} from '@steroidsjs/nest-modules/user/services/IUserService';
 import {join} from 'path';
-import {IUserRepository} from '@steroidsjs/nest-user/domain/interfaces/IUserRepository';
-import {UserRepository} from '@steroidsjs/nest/infrastructure/tests/app/repositories/UserRepository';
-import {UserService} from '@steroidsjs/nest-user/domain/services/UserService';
+import {UserService} from '../domain/services/UserService';
+import {UserRepository} from './repositories/UserRepository';
+import {IUserRepository} from '../domain/interfaces/IUserRepository';
+
 
 @Module({
     ...coreModule,
