@@ -9,6 +9,9 @@ import {DataMapper} from '@steroidsjs/nest/usecases/helpers/DataMapper';
 import {ContextDto} from "@steroidsjs/nest/usecases/dtos/ContextDto";
 import {NewsFormDto} from "src/news/domain/dtos/NewsFormDto";
 import {NewsDetailSchema} from "src/news/domain/dtos/NewsDetailSchema";
+import {AuthPermissions} from '@steroidsjs/nest-auth/infrastructure/decorators/AuthPermissions';
+import {PERMISSION_AUTH_MANAGE_NEWS_VIEW} from "src/auth/infrastructure/permissions";
+
 
 @ApiTags('Новости')
 @Controller('/news')
@@ -18,6 +21,7 @@ export class NewsAdminController {
     @Get()
     @ApiOperation({summary: 'Получение всех новостей'})
     @ApiOkSearchResponse({type: NewsDetailSchema})
+    @AuthPermissions(PERMISSION_AUTH_MANAGE_NEWS_VIEW)
     async search(
         @Query() dto: NewsSearchDto,
         @Context() context,
@@ -28,6 +32,7 @@ export class NewsAdminController {
     @Get('/:id')
     @ApiOperation({summary: 'Детальная информация новости'})
     @ApiOkSearchResponse({type: NewsDetailSchema})
+    @AuthPermissions(PERMISSION_AUTH_MANAGE_NEWS_VIEW)
     async getOne(
         @Param('id') id: number,
         @Context() context,
@@ -45,6 +50,7 @@ export class NewsAdminController {
     @Post('/:id?')
     @ApiOperation({summary: 'Создание новости'})
     @ApiOkResponse({type: NewsSchema})
+    @AuthPermissions(PERMISSION_AUTH_MANAGE_NEWS_VIEW)
     async update(
         @Param('id') id: number,
         @Context() context: ContextDto,
@@ -57,6 +63,7 @@ export class NewsAdminController {
     @Delete("/:id")
     @ApiOperation({summary: 'Удаление новости'})
     @ApiOkResponse({type: NewsSchema})
+    @AuthPermissions(PERMISSION_AUTH_MANAGE_NEWS_VIEW)
     async delete(@Param('id') id: number) {
         const news = await this.newsService.findById(id)
 
