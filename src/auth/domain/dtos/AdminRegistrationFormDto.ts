@@ -1,5 +1,4 @@
-import {EnumField, IntegerField, StringField} from "@steroidsjs/nest/infrastructure/decorators/fields";
-import {AuthRolesEnum} from "../enums/AuthRolesEnum";
+import {IntegerField, StringField} from "@steroidsjs/nest/infrastructure/decorators/fields";
 
 export class AdminRegistrationFormDto {
     @StringField({

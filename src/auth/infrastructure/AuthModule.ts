@@ -14,7 +14,6 @@ import {AuthPermissionsService} from '@steroidsjs/nest-auth/domain/services/Auth
 import {AuthRoleService} from '@steroidsjs/nest-auth/domain/services/AuthRoleService';
 import permissions from './permissions';
 
-
 @Module({
     ...coreModule,
     tables: [
@@ -27,7 +26,7 @@ import permissions from './permissions';
         return {
             ...module,
             imports: [
-                ...module.imports,
+                ...module.imports, 
             ],
             controllers: [
                 ...module.controllers.filter(controller => controller !== BaseAuthController),

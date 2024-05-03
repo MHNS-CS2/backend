@@ -8,8 +8,9 @@ import {
     StringField,
     UpdateTimeField
 } from "@steroidsjs/nest/infrastructure/decorators/fields";
+import {UserModel as BaseUserModel} from "@steroidsjs/nest-modules/user/models/UserModel";
 
-export class UserModel {
+export class UserModel extends BaseUserModel {
     @PrimaryKeyField()
     id: number;
 
