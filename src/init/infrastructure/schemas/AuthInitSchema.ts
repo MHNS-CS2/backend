@@ -1,7 +1,12 @@
-import {ApiProperty} from '@nestjs/swagger';
-import {UserSchema} from '@steroidsjs/nest/infrastructure/tests/app/schemas/UserSchema';
+import {RelationField} from '@steroidsjs/nest/infrastructure/decorators/fields';
+import {UserSchema} from '../../../user/domain/dtos/UserSchema';
 
 export class AuthInitSchema {
-    @ApiProperty()
-    readonly user: UserSchema;
+    @RelationField({
+        type: 'OneToOne',
+        inverseSide: () => null,
+        isOwningSide: true,
+        relationClass: () => UserSchema,
+    })
+    user: UserSchema;
 }

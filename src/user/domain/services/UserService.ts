@@ -6,6 +6,7 @@ import {IUserRepository} from "../interfaces/IUserRepository";
 import {ISessionService} from "@steroidsjs/nest-auth/domain/interfaces/ISessionService";
 import {AdminRegistrationFormDto} from "src/auth/domain/dtos/AdminRegistrationFormDto";
 import {DataMapper} from "@steroidsjs/nest/usecases/helpers/DataMapper";
+import {UserRepository} from "src/user/infrastructure/repositories/UserRepository";
 
 @Injectable()
 export class UserService extends CrudService<UserModel, UserSearchDto, UserModel> {
@@ -26,6 +27,8 @@ export class UserService extends CrudService<UserModel, UserSearchDto, UserModel
             model.passwordHash = await this.session.hashPassword(dto.password);
         }
 
-        return this.create(model);
+        const user = await this.repository.create(model)
+
+        return user;
     }
 }

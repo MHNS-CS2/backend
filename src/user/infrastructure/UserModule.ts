@@ -9,7 +9,7 @@ import {join} from 'path';
 import {UserService} from '../domain/services/UserService';
 import {UserRepository} from './repositories/UserRepository';
 import {IUserRepository} from '../domain/interfaces/IUserRepository';
-
+import {AuthRoleService} from '@steroidsjs/nest-auth/domain/services/AuthRoleService';
 
 @Module({
     ...coreModule,
